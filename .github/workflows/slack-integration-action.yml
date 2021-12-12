@@ -1,0 +1,14 @@
+name: slack-pr-integration-action
+on:
+  pull_request_target:
+    types: [opened, labeled, reopened ]
+jobs:
+  do-slack-notification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: RevathiKotla/slack-pr-open-notification-action@v1.3.0
+        name: jira-description-action
+        env:
+          SLACK_WEBHOOK_URL : https://hooks.slack.com/services/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ß
+          PULL_REQUEST_NUMBER : ${{ github.event.pull_request.number }}
+          PULL_REQUEST_TITLE : ${{ github.event.pull_request.title }}
